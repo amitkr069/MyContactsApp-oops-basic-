@@ -1,13 +1,14 @@
 /**
  * @author AmIT
- * @version 3.0
+ * @version 4.0
  * 
- * This is updated for use case 3 (Porfile Management)
+ * This is updated for use case 4 (Contact Management - Add Contact)
  */
 
 package com.main;
 
 import com.usermanagement.*;
+import com.contactmanagement.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,15 +17,18 @@ import java.util.Scanner;
 public class MyContactsApp {
 
     private static List<User> users = new ArrayList<>();
-    // making a list of User type. it contains ojects
+    // making a list of User type. it contains objects
     
     private static User loggedInUser = null;
+    
+    private static ContactManager contactManager = new ContactManager();
+    // creatig object of ContactManager class
 
     private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        while (true) { //contiuing the loop until we exit
+        while (true) { //continuing the loop until we exit
 
             System.out.println("\n===== MyContacts App =====");
 
@@ -34,10 +38,11 @@ public class MyContactsApp {
                 System.out.println("3. Login (Open)");
                 System.out.println("4. Exit");
             } else {
-            	// if logged in then do profile management or logout.
+            	// if logged in then do profile management, contact management or logout.
                 System.out.println("1. Profile Management");
-                System.out.println("2. Logout");
-                System.out.println("3. Exit");
+                System.out.println("2. Contact Management");
+                System.out.println("3. Logout");
+                System.out.println("4. Exit");
             }
 
             System.out.print("Enter choice: ");
@@ -59,8 +64,9 @@ public class MyContactsApp {
 
                 switch (choice) {
                     case 1 -> profileManagement();
-                    case 2 -> logout();
-                    case 3 -> { return; }
+                    case 2 -> contactManagement();
+                    case 3 -> logout();
+                    case 4 -> { return; }
                     default -> System.out.println("Invalid choice!");
                  // calling different methods based on the input
                 }
@@ -185,6 +191,64 @@ public class MyContactsApp {
         // if i log out then the loggedIn object will be null;
         System.out.println("Logged out successfully!");
     }
+    
+    // Contact Management
+    
+    // USE case 4
+    
+    private static void contactManagement() {
+
+        if (loggedInUser == null) {// first checking if logged in or not
+            System.out.println("Please login first!");
+            return;
+        }
+
+        Scanner sc = new Scanner(System.in);
+
+        AddContact addContact = new AddContact(); // created Add contact object
+
+        while (true) {
+
+            System.out.println("\n--- Contact Management ---");
+            System.out.println("1. Add Contact");
+            
+            System.out.println("2. Back");
+
+            System.out.print("Enter choice: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            try {
+                switch (choice) {
+
+                    case 1:
+                        System.out.print("Enter Name: ");
+                        String name = sc.nextLine();
+
+                        System.out.print("Enter Phone (10 digits): ");
+                        String phone = sc.nextLine();
+
+                        System.out.print("Enter Email: ");
+                        String email = sc.nextLine();
+
+                        Contact contact = new Contact(name, phone, email); //passing the parameters to the contact class
+                        addContact.add(contactManager, contact);
+                        break;
+
+                 
+                    case 2:
+                        return;
+
+                    default:
+                        System.out.println("Invalid choice");
+                }
+
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+    }
+
 
 
 

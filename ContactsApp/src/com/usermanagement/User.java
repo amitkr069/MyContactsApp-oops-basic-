@@ -30,6 +30,7 @@ public  class User {
 	public String getEmail() {return email;}
 	public String getName() {return name;}
 	public String getUserType() {return userType;}
+	public String getUsername() {return userName;}
 	
 	public boolean checkPassword(String inputPassword) {
 		return this.password.equals(Hash.hashPassword(inputPassword));

@@ -18,8 +18,10 @@ public class MyContactsApp {
 
             System.out.println("\n===== MyContacts App =====");
             System.out.println("1. Register");
-            
-            System.out.println("2. Exit");
+            System.out.println("2. Login (Basic - Username)");
+            System.out.println("3. Login (Open - Email)");
+
+            System.out.println("4. Exit");
 
             System.out.print("Enter choice: ");
             int choice = sc.nextInt();
@@ -30,6 +32,12 @@ public class MyContactsApp {
                     registerUser();
                     break;
                 case 2:
+                    basicLogin();
+                    break;
+                case 3:
+                    openLogin();
+                    break;
+                case 4:
                     System.out.println("Exiting application...");
                     return;
                 default:
@@ -86,7 +94,49 @@ public class MyContactsApp {
             System.out.println("Registration Failed: " + e.getMessage());
         }
     }
-
-
     
+    // USE CASE 2
+    
+ //  BASIC AUTH 
+    private static void basicLogin() {
+
+        System.out.print("Enter Username: ");
+        String username = sc.nextLine();
+
+        System.out.print("Enter Password: ");
+        String password = sc.nextLine();
+
+        BasicAuthentication auth = new BasicAuthentication(users);
+        User user = auth.login(username, password);
+
+        if (user != null) {
+            System.out.println("Basic Login Successful!");
+            System.out.println("Welcome " + user.getName());
+        } else {
+            System.out.println("Invalid Username or Password");
+        }
+    }
+
+    //  OPEN AUTH
+
+    private static void openLogin() {
+
+        System.out.print("Enter Email: ");
+        String email = sc.nextLine();
+
+        System.out.print("Enter Password: ");
+        String password = sc.nextLine();
+
+        OpenAuthentication auth = new OpenAuthentication(users);
+        User user = auth.login(email, password);
+
+        if (user != null) {
+            System.out.println("Open Login Successful!");
+            System.out.println("Welcome " + user.getName());
+        } else {
+            System.out.println("Invalid Email or Password");
+        }
+    }
+
+   
 }

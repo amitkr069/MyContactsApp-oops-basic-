@@ -1,8 +1,8 @@
 /**
  * @author AmIT
- * @version 8.0
+ * @version 9.0
  * 
- * This is updated for use case 8 Bulk Operation
+ * This is updated for use case 9 Search Contacts
  */
 
 package com.main;
@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
+
 public class MyContactsApp {
 
     private static List<User> users = new ArrayList<>();
@@ -21,7 +23,7 @@ public class MyContactsApp {
     
     private static User loggedInUser = null;
     
-    private static ContactManager contactManager = new ContactManager();
+//    private static ContactManager contactManager = new ContactManager();
     // creating object of ContactManager class
 
     private static Scanner sc = new Scanner(System.in);
@@ -52,7 +54,7 @@ public class MyContactsApp {
             if (loggedInUser == null) {
 
                 switch (choice) {
-                    case 1 -> registerUser();
+                    case 1 -> Register.registerUser(users);
                     case 2 -> basicLogin();
                     case 3 -> openLogin();
                     case 4 -> { return; }
@@ -64,7 +66,7 @@ public class MyContactsApp {
 
                 switch (choice) {
                     case 1 -> profileManagement();
-                    case 2 -> contactManagement();
+                    case 2 -> Manage.contactManagement(loggedInUser);
                     case 3 -> logout();
                     case 4 -> { return; }
                     default -> System.out.println("Invalid choice!");
@@ -73,57 +75,7 @@ public class MyContactsApp {
             }
         }
     }
-    
-    // USE CASE 1 - Registration
-    
-
-    private static void registerUser() {
-
-        try {
-            System.out.print("Enter Email: ");
-            String email = sc.nextLine();
-
-            // Duplicate email check
-            for (User u : users) {
-                if (u.getEmail().equalsIgnoreCase(email)) {
-                    System.out.println("Email already registered!");
-                    return;
-                }
-            }
-
-            System.out.print("Enter Password: ");
-            String password = sc.nextLine();
-
-            System.out.print("Enter Name: ");
-            String name = sc.nextLine();
-            
-            System.out.print("Enter user Name: ");
-            String userName = sc.nextLine();
-
-            System.out.print("Enter Type (FREE / PREMIUM): ");
-            String type = sc.nextLine();
-            
-            // taking all necessary inputs
-
-            User user;
-
-            if (type.equalsIgnoreCase("FREE")) {
-                user = new FreeUser(email, password, name, userName);
-            } else if (type.equalsIgnoreCase("PREMIUM")) {
-                user = new PremiumUser(email, password, name, userName);
-            } else {
-                System.out.println("Invalid user type!");
-                return;
-            }
-            // making user object bsed on the userType(Free of premium)
-
-            users.add(user);
-            System.out.println("User Registered Successfully!");
-
-        } catch (IllegalArgumentException e) {
-            System.out.println("Registration Failed: " + e.getMessage());
-        }
-    }
+  
     
     // USE CASE 2
     
@@ -190,103 +142,4 @@ public class MyContactsApp {
         System.out.println("Logged out successfully!");
     }
     
-    // Contact Management
-    
-    
-    private static void contactManagement() {
-
-        if (loggedInUser == null) {// first checking if logged in or not
-            System.out.println("Please login first!");
-            return;
-        }
-
-//        Scanner sc = new Scanner(System.in);
-
-        AddContact addContact = new AddContact(); // created Add contact object
-        ViewContact viewcontact = new ViewContact(); // created view contact object
-        EditContact edit = new EditContact(); // created edit contact object;
-        DeleteContact delete = new DeleteContact();
-        while (true) {
-
-            System.out.println("\n--- Contact Management ---");
-            System.out.println("1. Add Contact");
-            System.out.println("2. View Contacts");
-            System.out.println("3. Edit Contact");
-            System.out.println("4. Delete Contact");
-            System.out.println("5. Bulk Delete Contact");
-            System.out.println("6. Back");
-
-            System.out.print("Enter choice: ");
-            int choice = sc.nextInt();
-            sc.nextLine();
-
-            try {
-                switch (choice) {
-
-                    case 1:
-                        addContact.add(contactManager);
-                        // updated the add Contact feature (added Person and Organisation child class);
-                        break;
-
-                    case 2: 
-                    	if(contactManager.getContacts().size() == 0) {
-                    		System.out.println("No contacts to view");
-                    		break;
-                    		
-                    	}
-                    	viewcontact.viewContact(contactManager);
-                		break;
-                    case 3:
-                    	if(contactManager.getContacts().size() == 0) {
-                    		System.out.println("No contacts to edit");
-                    		break;
-                    	}
-                    	viewcontact.viewContact(contactManager);
-                    	System.out.println("Enter the index number to update");
-                    	int index = sc.nextInt() - 1;
-                    	sc.nextLine();
-                    	
-                    	System.out.print("New Name");
-                    	String newName = sc.nextLine();
-                    	
-                    	System.out.print("New number");
-                    	String newNum = sc.nextLine();
-                    	
-                    	System.out.print("New mail");
-                    	String newMail = sc.nextLine();
-                    	
-                    	edit.update(contactManager, index, newName, newNum, newMail);
-                    	break;
-                    case 4:
-                    	if(contactManager.getContacts().size() == 0) {
-                    		System.out.println("No contacts to delete");
-
-                    		break;
-                    	}
-                    	viewcontact.viewContact(contactManager);
-                    	System.out.println("Enter the index number to delete");
-                    	index = sc.nextInt() - 1;
-                    	sc.nextLine();
-                    	delete.delete(contactManager, index, loggedInUser);
-                    	break;
-                    case 5:
-                    	if(contactManager.getContacts().size() == 0) {
-                    		System.out.println("No contacts to delete");
-                    		break;
-                    	}
-                    	
-                    	BulkOperation bulk = new BulkOperation();
-                    	bulk.bulkDelete(contactManager, loggedInUser);
-                    case 6:
-                        return;
-
-                    default:
-                        System.out.println("Invalid choice");
-                }
-
-            } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
-            }
-        }
-    }
 }

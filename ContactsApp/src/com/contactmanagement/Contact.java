@@ -1,10 +1,13 @@
 package com.contactmanagement;
 
+import java.time.LocalDate;
+
 public class Contact {
 
     private String name;
     private String phone;
     private String email;
+    private LocalDate dateAdded;
 
     public Contact(String name, String phone, String email) {
 
@@ -15,6 +18,7 @@ public class Contact {
         this.name = name;
         this.phone = phone;
         this.email = email;
+        this.dateAdded = LocalDate.now();
     }
     
     // Copy Constructor
@@ -22,6 +26,7 @@ public class Contact {
     	this.name = other.name;
     	this.phone = other.phone;
     	this.email = other.email;
+    	this.dateAdded = other.dateAdded;
     }
 
     private boolean isValidPhone(String phone) {
@@ -33,6 +38,7 @@ public class Contact {
     public String getPhone() { return phone; }
     public String getEmail() { return email; }
     
+    
     public String getType() {
     	return "";
     }
@@ -40,6 +46,8 @@ public class Contact {
     public String getCategory() {
     	return "";
     }
+    
+    public LocalDate getDateAdded() { return dateAdded; }
     // getter methods
 
     public void setName(String name) { this.name = name; }

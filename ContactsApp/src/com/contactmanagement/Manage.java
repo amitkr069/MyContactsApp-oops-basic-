@@ -28,7 +28,8 @@ public class Manage {
             System.out.println("4. Delete Contact");
             System.out.println("5. Bulk Delete Contact");
             System.out.println("6. Search Contacts");
-            System.out.println("7. Back");
+            System.out.println("7. Filter Contacts");
+            System.out.println("8. Back");
 
             System.out.print("Enter choice: ");
             int choice = sc.nextInt();
@@ -95,6 +96,9 @@ public class Manage {
                     	SearchManager searchManager = new SearchManager();
                     	searchManager.search(contactManager);
                     case 7:
+                    	FilterManager filterManager = new FilterManager();
+                    	filterManager.applyFilter(contactManager);
+                    case 8:
                         return;
 
                     default:

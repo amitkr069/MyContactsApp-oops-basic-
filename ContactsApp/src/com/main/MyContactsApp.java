@@ -1,8 +1,8 @@
 /**
  * @author AmIT
- * @version 9.0
+ * @version 10.0
  * 
- * This is updated for use case 9 Search Contacts
+ * This is updated for use case 10 Filter Contacts
  */
 
 package com.main;
@@ -141,5 +141,4 @@ public class MyContactsApp {
         // if i log out then the loggedIn object will be null;
         System.out.println("Logged out successfully!");
     }
-    
 }

@@ -1,8 +1,8 @@
 /**
  * @author AmIT
- * @version 7.0
+ * @version 8.0
  * 
- * This is updated for use case 7 (Contact Management - Delete Contact)
+ * This is updated for use case 8 Bulk Operation
  */
 
 package com.main;
@@ -213,7 +213,8 @@ public class MyContactsApp {
             System.out.println("2. View Contacts");
             System.out.println("3. Edit Contact");
             System.out.println("4. Delete Contact");
-            System.out.println("5. Back");
+            System.out.println("5. Bulk Delete Contact");
+            System.out.println("6. Back");
 
             System.out.print("Enter choice: ");
             int choice = sc.nextInt();
@@ -269,6 +270,14 @@ public class MyContactsApp {
                     	delete.delete(contactManager, index, loggedInUser);
                     	break;
                     case 5:
+                    	if(contactManager.getContacts().size() == 0) {
+                    		System.out.println("No contacts to delete");
+                    		break;
+                    	}
+                    	
+                    	BulkOperation bulk = new BulkOperation();
+                    	bulk.bulkDelete(contactManager, loggedInUser);
+                    case 6:
                         return;
 
                     default:
@@ -280,5 +289,4 @@ public class MyContactsApp {
             }
         }
     }
-   
 }

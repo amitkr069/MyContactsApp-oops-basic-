@@ -36,6 +36,10 @@ public class Contact {
     public String getType() {
     	return "";
     }
+    
+    public String getCategory() {
+    	return "";
+    }
     // getter methods
 
     public void setName(String name) { this.name = name; }

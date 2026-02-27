@@ -9,7 +9,8 @@ public class ViewContact {
 			System.out.println(index + " "
 			+ c.getName() + " " + 
 			c.getEmail() + " " +
-			c.getPhone()
+			c.getPhone() + " " +
+			c.getCategory()
 			);
 			
 			index++;

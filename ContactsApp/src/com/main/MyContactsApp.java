@@ -1,8 +1,8 @@
 /**
  * @author AmIT
- * @version 4.0
+ * @version 5.0
  * 
- * This is updated for use case 4 (Contact Management - Add Contact)
+ * This is updated for use case 5 (Contact Management - View Contacts)
  */
 
 package com.main;
@@ -22,7 +22,7 @@ public class MyContactsApp {
     private static User loggedInUser = null;
     
     private static ContactManager contactManager = new ContactManager();
-    // creatig object of ContactManager class
+    // creating object of ContactManager class
 
     private static Scanner sc = new Scanner(System.in);
 
@@ -206,13 +206,15 @@ public class MyContactsApp {
         Scanner sc = new Scanner(System.in);
 
         AddContact addContact = new AddContact(); // created Add contact object
+        ViewContact viewcontact = new ViewContact(); // created view contact object
 
         while (true) {
 
             System.out.println("\n--- Contact Management ---");
             System.out.println("1. Add Contact");
+            System.out.println("2. View Contacts");
             
-            System.out.println("2. Back");
+            System.out.println("3. Back");
 
             System.out.print("Enter choice: ");
             int choice = sc.nextInt();
@@ -235,8 +237,10 @@ public class MyContactsApp {
                         addContact.add(contactManager, contact);
                         break;
 
-                 
-                    case 2:
+                    case 2: 
+                    	viewcontact.viewContact(contactManager);
+                    	break;
+                    case 3:
                         return;
 
                     default:

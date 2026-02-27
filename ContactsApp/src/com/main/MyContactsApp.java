@@ -1,8 +1,8 @@
 /**
  * @author AmIT
- * @version 5.0
+ * @version 6.0
  * 
- * This is updated for use case 5 (Contact Management - View Contacts)
+ * This is updated for use case 6 (Contact Management - Edit Contacts)
  */
 
 package com.main;
@@ -203,18 +203,20 @@ public class MyContactsApp {
             return;
         }
 
-        Scanner sc = new Scanner(System.in);
+//        Scanner sc = new Scanner(System.in);
 
         AddContact addContact = new AddContact(); // created Add contact object
         ViewContact viewcontact = new ViewContact(); // created view contact object
+        EditContact edit = new EditContact(); // created edit contact object;
 
         while (true) {
 
             System.out.println("\n--- Contact Management ---");
             System.out.println("1. Add Contact");
             System.out.println("2. View Contacts");
+            System.out.println("3. Edit Contact");
             
-            System.out.println("3. Back");
+            System.out.println("4. Back");
 
             System.out.print("Enter choice: ");
             int choice = sc.nextInt();
@@ -224,23 +226,31 @@ public class MyContactsApp {
                 switch (choice) {
 
                     case 1:
-                        System.out.print("Enter Name: ");
-                        String name = sc.nextLine();
-
-                        System.out.print("Enter Phone (10 digits): ");
-                        String phone = sc.nextLine();
-
-                        System.out.print("Enter Email: ");
-                        String email = sc.nextLine();
-
-                        Contact contact = new Contact(name, phone, email); //passing the parameters to the contact class
-                        addContact.add(contactManager, contact);
+                        addContact.add(contactManager);
+                        // updated the add Contact feature (added Person and Organisation child class);
                         break;
 
                     case 2: 
                     	viewcontact.viewContact(contactManager);
                     	break;
                     case 3:
+                    	viewcontact.viewContact(contactManager);
+                    	System.out.println("Enter the index number to update");
+                    	int index = sc.nextInt() - 1;
+                    	sc.nextLine();
+                    	
+                    	System.out.print("New Name");
+                    	String newName = sc.nextLine();
+                    	
+                    	System.out.print("New number");
+                    	String newNum = sc.nextLine();
+                    	
+                    	System.out.print("New mail");
+                    	String newMail = sc.nextLine();
+                    	
+                    	edit.update(contactManager, index, newName, newNum, newMail);
+                    	
+                    case 4:
                         return;
 
                     default:

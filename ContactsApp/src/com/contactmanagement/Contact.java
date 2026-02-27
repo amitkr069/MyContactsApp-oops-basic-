@@ -16,6 +16,13 @@ public class Contact {
         this.phone = phone;
         this.email = email;
     }
+    
+    // Copy Constructor
+    public Contact(Contact other) {
+    	this.name = other.name;
+    	this.phone = other.phone;
+    	this.email = other.email;
+    }
 
     private boolean isValidPhone(String phone) {
         return phone.matches("^[9876]\\d{9}$");
@@ -25,12 +32,16 @@ public class Contact {
     public String getName() { return name; }
     public String getPhone() { return phone; }
     public String getEmail() { return email; }
+    
+    public String getType() {
+    	return "";
+    }
     // getter methods
 
     public void setName(String name) { this.name = name; }
 
     public void setPhone(String phone) {
-        if (!isValidPhone(phone)) // if num,er is not valid then throw exception
+        if (!isValidPhone(phone)) // if number is not valid then throw exception
             throw new IllegalArgumentException("Invalid phone number");
         this.phone = phone; 
     }

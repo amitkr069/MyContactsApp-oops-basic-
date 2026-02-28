@@ -18,7 +18,7 @@ public class SearchManager {
         System.out.println("1. Name");
         System.out.println("2. Phone");
         System.out.println("3. Email");
-        System.out.println("4. Tag -> Person(Work or Home), Organization");
+        System.out.println("4. Tag -> Person, Organization");
 
         System.out.print("Enter choice: ");
         int choice = sc.nextInt();
@@ -60,10 +60,10 @@ public class SearchManager {
                         + c.getPhone() + " | "
                         + c.getEmail());
 
-                if (c instanceof Person) {
-                    Person p = (Person) c;
-                    System.out.print(" | " + p.getCategory());
-                }
+//                if (c instanceof Person) {
+//                    Person p = (Person) c;
+//                    System.out.print(" | " + p.getCategory());
+//                }
 
                 System.out.println();
             }

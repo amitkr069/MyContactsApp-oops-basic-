@@ -32,7 +32,9 @@ public class Manage {
             System.out.println("7. Filter Contacts");
             System.out.println("8. Create Tag");
             System.out.println("9. View All Tags");
-            System.out.println("10. Back");
+            System.out.println("10. Assign Tags to Contacts");
+            System.out.println("11. Remove Tag from Contacts");
+            System.out.println("12. Back");
 
             System.out.print("Enter choice: ");
             int choice = sc.nextInt();
@@ -95,12 +97,15 @@ public class Manage {
                     	
                     	BulkOperation bulk = new BulkOperation();
                     	bulk.bulkDelete(contactManager, loggedInUser);
+                    	break;
                     case 6:
                     	SearchManager searchManager = new SearchManager();
                     	searchManager.search(contactManager);
+                    	break;
                     case 7:
                     	FilterManager filterManager = new FilterManager();
                     	filterManager.applyFilter(contactManager);
+                    	break;
                     case 8:
                     	tagManager.createTag();
                         break;
@@ -108,6 +113,14 @@ public class Manage {
                     	tagManager.viewTags();
                         break;
                     case 10:
+                    	AddTags addtag = new AddTags();
+                        addtag.assign(contactManager, tagManager);
+                        break;
+                    case 11:
+                    	RemoveTag removetag = new RemoveTag();
+                    	removetag.remove(contactManager, tagManager);
+                    	break;
+                    case 12:
                         return;
 
                     default:

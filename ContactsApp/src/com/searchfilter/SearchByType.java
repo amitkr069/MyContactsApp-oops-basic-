@@ -27,14 +27,14 @@ public class SearchByType implements SearchStrategy {
             }
 
             // Work/Home search
-            else if (c instanceof Person) {
-
-                Person p = (Person) c;
-
-                if (p.getCategory().equalsIgnoreCase(keyword)) {
-                    result.add(p);
-                }
-            }
+//            else if (c instanceof Person) {
+//
+//                Person p = (Person) c;
+//
+//                if (p.getCategory().equalsIgnoreCase(keyword)) {
+//                    result.add(p);
+//                }
+//            }
         }
 
         return result;

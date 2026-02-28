@@ -18,7 +18,7 @@ public class FilterManager {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("\nFilter By:");
-        System.out.println("1. Tag (Person, Organization, Work, Home)");
+        System.out.println("1. Tag (Person, Organization)");
         System.out.println("2. Date Added (yyyy-mm-dd)");
 
         System.out.print("Enter choice: ");
@@ -57,10 +57,10 @@ public class FilterManager {
                         + c.getEmail()
                         + " | Added: " + c.getDateAdded());
 
-                if (c instanceof Person) {
-                    Person p = (Person) c;
-                    System.out.print(" | " + p.getCategory());
-                }
+//                if (c instanceof Person) {
+//                    Person p = (Person) c;
+//                    System.out.print(" | " + p.getCategory());
+//                }
 
                 System.out.println();
             }

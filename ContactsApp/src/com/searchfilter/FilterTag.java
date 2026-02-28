@@ -23,14 +23,14 @@ public class FilterTag implements FilterStrategy{
                 result.add(c);
             }
 
-            else if (c instanceof Person) {
-
-                Person p = (Person) c;
-
-                if (p.getCategory().equalsIgnoreCase(value)) {
-                    result.add(p);
-                }
-            }
+//            else if (c instanceof Person) {
+//
+//                Person p = (Person) c;
+//
+//                if (p.getCategory().equalsIgnoreCase(value)) {
+//                    result.add(p);
+//                }
+//            }
         }
 
         return result;

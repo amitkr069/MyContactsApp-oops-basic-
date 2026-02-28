@@ -48,9 +48,7 @@ public class Contact {
     	return "";
     }
     
-    public String getCategory() {
-    	return "";
-    }
+    
     
     public LocalDate getDateAdded() { return dateAdded; }
     

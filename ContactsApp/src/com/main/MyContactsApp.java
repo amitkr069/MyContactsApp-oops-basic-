@@ -1,9 +1,9 @@
 /**
  * @author AmIT
- * @version 11.0
+ * @version 12.0
  * 
- * This is updated for use case 11 
- * Feature added to create multiple tags
+ * This is updated for use case 12 
+ * Implemented adding and removing multiple tags to/from contacts
  */
 
 package com.main;
@@ -14,8 +14,6 @@ import com.contactmanagement.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-
 
 public class MyContactsApp {
 

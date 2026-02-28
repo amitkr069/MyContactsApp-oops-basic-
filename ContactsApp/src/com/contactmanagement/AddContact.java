@@ -29,10 +29,8 @@ public class AddContact {
             System.out.print("Enter Date of Birth: ");
             String dob = sc.nextLine();
             
-            System.out.print("Enter Category (Work/Home)");
-            String category = sc.nextLine();
 
-            contact = new Person(name, phone, email, dob, category);
+            contact = new Person(name, phone, email, dob);
 
         } else if (typeChoice == 2) {
 

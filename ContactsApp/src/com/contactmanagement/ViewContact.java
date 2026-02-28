@@ -9,12 +9,15 @@ public class ViewContact {
 			System.out.println(index + " "
 			+ c.getName() + " " + 
 			c.getEmail() + " " +
-			c.getPhone() + " " +
-			c.getCategory()
+			c.getPhone()
 			);
-			
+			System.out.print(" Tags: ");
+			for (Tag tag : c.getTags()) {
+			    System.out.print(tag.getName() + " ");
+			}
+			System.out.println();
 			index++;
-			
 		}
+		
 	}
 }

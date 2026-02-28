@@ -1,6 +1,8 @@
 package com.contactmanagement;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Contact {
 
@@ -8,7 +10,8 @@ public class Contact {
     private String phone;
     private String email;
     private LocalDate dateAdded;
-
+    private Set<Tag> tags;
+    
     public Contact(String name, String phone, String email) {
 
         if (!isValidPhone(phone)) {
@@ -19,6 +22,7 @@ public class Contact {
         this.phone = phone;
         this.email = email;
         this.dateAdded = LocalDate.now();
+        this.tags = new HashSet<>();
     }
     
     // Copy Constructor
@@ -27,6 +31,7 @@ public class Contact {
     	this.phone = other.phone;
     	this.email = other.email;
     	this.dateAdded = other.dateAdded;
+    	this.tags = new HashSet<>(other.tags);
     }
 
     private boolean isValidPhone(String phone) {
@@ -48,6 +53,8 @@ public class Contact {
     }
     
     public LocalDate getDateAdded() { return dateAdded; }
+    
+    public Set<Tag> getTags() { return tags; }
     // getter methods
 
     public void setName(String name) { this.name = name; }
@@ -60,6 +67,14 @@ public class Contact {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public void addTag(Tag tag) {
+        tags.add(tag);
+    }
+
+    public void removeTag(Tag tag) {
+        tags.remove(tag);
     }
     
     // above 3 are the setter methods

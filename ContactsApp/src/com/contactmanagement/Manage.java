@@ -20,6 +20,7 @@ public class Manage {
         ViewContact viewcontact = new ViewContact(); // created view contact object
         EditContact edit = new EditContact(); // created edit contact object;
         DeleteContact delete = new DeleteContact();
+        BulkOperation bulk = new BulkOperation();
         while (true) {
 
             System.out.println("\n--- Contact Management ---");
@@ -28,13 +29,14 @@ public class Manage {
             System.out.println("3. Edit Contact");
             System.out.println("4. Delete Contact");
             System.out.println("5. Bulk Delete Contact");
-            System.out.println("6. Search Contacts");
-            System.out.println("7. Filter Contacts");
-            System.out.println("8. Create Tag");
-            System.out.println("9. View All Tags");
-            System.out.println("10. Assign Tags to Contacts");
-            System.out.println("11. Remove Tag from Contacts");
-            System.out.println("12. Back");
+            System.out.println("6. Bulk Assign Tag");
+            System.out.println("7. Search Contacts");
+            System.out.println("8. Filter Contacts");
+            System.out.println("9. Create Tag");
+            System.out.println("10. View All Tags");
+            System.out.println("11. Assign Tags to Contacts");
+            System.out.println("12. Remove Tag from Contacts");
+            System.out.println("13. Back");
 
             System.out.print("Enter choice: ");
             int choice = sc.nextInt();
@@ -95,32 +97,39 @@ public class Manage {
                     		break;
                     	}
                     	
-                    	BulkOperation bulk = new BulkOperation();
                     	bulk.bulkDelete(contactManager, loggedInUser);
                     	break;
                     case 6:
+                    	if(contactManager.getContacts().size() == 0) {
+                    		System.out.println("No contacts to assign tag");
+                    		break;
+                    	}
+                    	
+                    	bulk.assignBulk(contactManager, tagManager);
+                    	break;
+                    case 7:
                     	SearchManager searchManager = new SearchManager();
                     	searchManager.search(contactManager);
                     	break;
-                    case 7:
+                    case 8:
                     	FilterManager filterManager = new FilterManager();
                     	filterManager.applyFilter(contactManager);
                     	break;
-                    case 8:
+                    case 9:
                     	tagManager.createTag();
                         break;
-                    case 9:
+                    case 10:
                     	tagManager.viewTags();
                         break;
-                    case 10:
+                    case 11:
                     	AddTags addtag = new AddTags();
                         addtag.assign(contactManager, tagManager);
                         break;
-                    case 11:
+                    case 12:
                     	RemoveTag removetag = new RemoveTag();
                     	removetag.remove(contactManager, tagManager);
                     	break;
-                    case 12:
+                    case 13:
                         return;
 
                     default:

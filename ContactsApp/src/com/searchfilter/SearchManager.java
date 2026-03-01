@@ -18,7 +18,9 @@ public class SearchManager {
         System.out.println("1. Name");
         System.out.println("2. Phone");
         System.out.println("3. Email");
-        System.out.println("4. Tag -> Person, Organization");
+        System.out.println("4. Category -> Person, Organization");
+        System.out.println("5. Search by Tag");
+
 
         System.out.print("Enter choice: ");
         int choice = sc.nextInt();
@@ -41,6 +43,9 @@ public class SearchManager {
                 break;
             case 4:
                 strategy = new SearchByType();
+                break;
+            case 5:
+                strategy = new SearchByTag();
                 break;
             default:
                 System.out.println("Invalid choice");

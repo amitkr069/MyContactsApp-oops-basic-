@@ -18,8 +18,9 @@ public class FilterManager {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("\nFilter By:");
-        System.out.println("1. Tag (Person, Organization)");
+        System.out.println("1. Category (Person, Organization)");
         System.out.println("2. Date Added (yyyy-mm-dd)");
+        System.out.println("3. Filter by Tag");
 
         System.out.print("Enter choice: ");
         int choice = sc.nextInt();
@@ -36,6 +37,9 @@ public class FilterManager {
                 break;
             case 2:
                 strategy = new FilterDate();
+                break;
+            case 3:
+                strategy = new FilterByTag();
                 break;
             default:
                 System.out.println("Invalid choice");

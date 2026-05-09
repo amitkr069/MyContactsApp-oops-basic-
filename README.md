@@ -1,36 +1,33 @@
-# My Contacts App
+# MyContactsApp-oops-basic
 
-This branch contains all the files merged from the 12 branches created for the project.
+## Overview
 
-## Problem Domain Overview
+MyContactApp-Basic is a Java console application for managing user profiles and contact data. The app supports user registration, authentication, profile updates, contact creation, editing, deletion, searching, filtering, and tag management.
 
-MyContacts App is a Java-based, console-driven application implemented use-case wise to demonstrate object-oriented design and core Java concepts through a contact management system.
+---
 
-## Features:
+## Project structure
+ContactApp/src/com/main/Main.java - application entry point
 
-This application consolidates multiple use cases (UC1 to UC10) into a single, cohesive user experience:
+ContactApp/src/com/usermanagement/ - user registration, profile handling, and account types
 
-User Management: Registration and Authentication (UC1, UC2).
+ContactApp/src/com/contactmanagement/ - contact and tag management
 
-Profile: Manage personal details, passwords, and preferences (UC3).
+ContactApp/src/com/searchfilter/ - contact search and filtering functionality
 
+---
 
-Contacts:
+## Features
+Create and register new users
 
-  Create and Manage Person & Organization contacts (UC4).
-  
-  View details with Decorator enhancements (UpperCase, Masked Email) (UC5).
-  
-  Edit contacts with Undo/Redo capabilities (Command Pattern) (UC6).
-  
-  Delete contacts (Soft & Hard Delete) (UC7).
+Authenticate users with basic and OAuth-style login
 
-Groups: Create and manage contact groups with bulk operations (Composite Pattern) (UC8).
+View and update user profile information
 
-Search: Advanced search using Specification Pattern (Name, Phone, Email, Tag, etc.) (UC9).
+Add, edit, view, and delete contacts
 
-Filter & Sort: Advanced filtering and sorting options (Strategy Pattern) (UC10).
+Search contacts by name, mobile number, email, or tag
 
-Admin Features: User oversight and global search capabilities.
+Create and manage tags for contacts
 
-
+Support for free and premium user account types
